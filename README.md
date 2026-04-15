@@ -38,3 +38,31 @@ restaurant-cli/
 ├── food.py          # 🧠 المنطق الأساسي: الفئات (MenuItem, Table, Hall) وقائمة الأصناف
 ├── main.py          # 🖥️ واجهة المستخدم والتدفق الرئيسي للتطبيق
 └── README.md        # 📖 توثيق المشروع (هذا الملف)
+
+=== Welcome to the Restaurant ===
+
+| Hall: 1 | | Hall: 2 | | Hall: 3 | | Hall: 4 |
+Enter Hall Number (1-4): 1
+
+=== Hall: 1 ===
+| Table: 1 | | Table: 2 | | Table: 3 | | Table: 4 | | Table: 5 |
+Enter Table Number (1-5): 2
+
+--- Actions ---
+1. Add Food
+2. View Order
+3. Checkout
+4. VIP Mode (10% Off)
+5. Exit
+Enter Action: 1
+
+1: Main Dishes
+2: Extras
+Choose menu type (1 or 2): 1
+
+Main Dishes:
+1: meat - 280 EGP
+2: chicken - 185 EGP
+...
+Choose item number: 2
+Added: chicken - 185 EGP
