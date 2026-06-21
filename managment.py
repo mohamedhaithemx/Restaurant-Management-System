@@ -12,22 +12,27 @@ def get_int_input(prompt: str, min_val: int, max_val: int) -> int:
             print("Invalid input. Please enter a number.")
 
 def add_food(table):
-    print("\n1: Main Dishes")
-    print("2: Extras")
-    choice_type = get_int_input("Choose menu type (1 or 2): ", 1, 2)
+    category_Dishes = []
+    for item in MENU_ITEMS:
+         if item.category not in category_Dishes:
+            category_Dishes.append(item.category)
+
+    print("\ncategroy")
+    for num, category in enumerate(category_Dishes, 1):
+        print(f"{num}: {category}")
+    choice_num = get_int_input("choose categroy: ",1,len(category_Dishes))
+    choice_categroy = category_Dishes[choice_num - 1]
+    items = [item for item in MENU_ITEMS if item.category == choice_categroy ]
     
-    category = "Main" if choice_type == 1 else "Extra"
-    items = [item for item in MENU_ITEMS if item.category == category]
+    print(f"\n{choice_categroy} Dishes:")
+    for num, item in enumerate(items, 1):
+        print(f"{num}: {item.name} - {item.price} EGP")
     
-    print(f"\n{category} Dishes:")
-    for idx, item in enumerate(items, 1):
-        print(f"{idx}: {item.name} - {item.price} EGP")
-    
-    item_choice = get_int_input("Choose item number: ", 1, len(items)) - 1
-    selected = items[item_choice]
-    
-    table.add(selected.name, selected.price)
-    print(f"Added: {selected.name} - {selected.price} EGP")
+    food_choice = get_int_input("Choose item number: ", 1, len(items)) - 1
+    user_food = items[food_choice]
+   
+    table.add(user_food.name, user_food.price)
+    print(f"Added: {user_food.name} - {user_food.price} EGP")
 
 def main():
     print("\n=== Welcome to the Restaurant ===\n")
