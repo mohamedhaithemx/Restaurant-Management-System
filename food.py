@@ -42,22 +42,17 @@ class Table:
         self.add_to_total(price)
 
     def __str__(self) -> str:
-        order_str = ' '.join([f'{name}: {price}' for name, price in self.order])
+        order_str = ' '.join([f'{name} : {price}' for name,price in self.order])
         return f"\nTable: {self.number}\nOrder: {order_str}\nTotal: {self.total}"
     
-    def check(self) -> None:
+    def check(self) -> str:
         if not self.order:
-            print("Error: No items in order to checkout!")
-            return
-        
-        print("---------- RECEIPT ----------")
-        print(self)
-        print("-----------------------------")
-        print("Checkout successfully!")
-        
+            return "Error: No items in order to checkout!"
+        receipt = f"--------\n{str(self)}\ncheck successfully"
         self.order = []
         self._total = 0.0
         self.vip = False
+        return receipt
         
 class Hall:
     def __init__(self, number: int):

@@ -12,27 +12,27 @@ def get_int_input(prompt: str, min_val: int, max_val: int) -> int:
             print("Invalid input. Please enter a number.")
 
 def add_food(table):
-    category_Dishes = []
+    category_dishes = [] 
     for item in MENU_ITEMS:
-         if item.category not in category_Dishes:
-            category_Dishes.append(item.category)
+         if item.category not in category_dishes:
+            category_dishes.append(item.category) # main - extra
 
-    print("\ncategroy")
-    for num, category in enumerate(category_Dishes, 1):
+    print("\ncategory")
+    for num, category in enumerate(category_dishes, 1):
         print(f"{num}: {category}")
-    choice_num = get_int_input("choose categroy: ",1,len(category_Dishes))
-    choice_categroy = category_Dishes[choice_num - 1]
-    items = [item for item in MENU_ITEMS if item.category == choice_categroy ]
+    choice_num = get_int_input("choose category: ",1,len(category_dishes)) # main or extra
+    choice_category = category_dishes[choice_num - 1] # user category
+    items = [item for item in MENU_ITEMS if item.category == choice_category ] # food in user category
     
-    print(f"\n{choice_categroy} Dishes:")
+    print(f"\n{choice_category} Dishes:")
     for num, item in enumerate(items, 1):
-        print(f"{num}: {item.name} - {item.price} EGP")
+        print(f"{num}: {item} ")
     
     food_choice = get_int_input("Choose item number: ", 1, len(items)) - 1
     user_food = items[food_choice]
    
     table.add(user_food.name, user_food.price)
-    print(f"Added: {user_food.name} - {user_food.price} EGP")
+    print(f"Added: {user_food} ")
 
 def main():
     print("\n=== Welcome to the Restaurant ===\n")
@@ -67,7 +67,8 @@ def main():
         elif action == 2:
             print(table_obj)
         elif action == 3:
-            table_obj.check()
+            receipt = table_obj.check()
+            print(receipt)
         elif action == 4:
             table_obj.vip = True
             print("✨ VIP Mode Activated! 10% discount applied.")
